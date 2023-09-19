@@ -25,9 +25,14 @@ namespace Tennis
             else
             {
                 if (player1Score == player2Score)
+                {
                     return "Deuce";
-                scoringText = player1Score > player2Score ? player1Name : player2Name;
-                return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
+                }
+                else
+                {
+                    scoringText = player1Score > player2Score ? player1Name : player2Name;
+                    return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
+                }
             }
         }
 
@@ -37,7 +42,12 @@ namespace Tennis
                                     &&
                                 player2Score < 4
                                     &&
-                                player1Score + player2Score < 6;
+                                IsNotDeuce();
+        }
+
+        private bool IsNotDeuce()
+        {
+            return player1Score + player2Score < 6;
         }
 
         public void WonPoint(string playerName)
