@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Tennis
 {
     public class TennisGame3 : ITennisGame
@@ -34,10 +36,33 @@ namespace Tennis
 
         private string UsualScores()
         {
-            string[] pointName = { "Love", "Fifteen", "Thirty", "Forty" };
-            string scoringText = pointName[player1Score];
-            return (player1Score == player2Score) ? scoringText + "-All" : scoringText + "-" + pointName[player2Score];
+            string scoringText = pointNames[player1Score];
+            if (PlayersAreTied())
+            {
+                return ShowTiedScore(scoringText);
+            }
+            else
+            {
+                return ShowUntiedScore(scoringText);
+            }
         }
+
+        private string ShowUntiedScore(string scoringText)
+        {
+            return scoringText + "-" + pointNames[player2Score];
+        }
+
+        private static string ShowTiedScore(string scoringText)
+        {
+            return scoringText + "-All";
+        }
+
+        private bool PlayersAreTied()
+        {
+            return (player1Score == player2Score);
+        }
+
+        private static IReadOnlyList<string> pointNames = new List<string>  { "Love", "Fifteen", "Thirty", "Forty" };
 
         private bool IsUnusual()
         {
