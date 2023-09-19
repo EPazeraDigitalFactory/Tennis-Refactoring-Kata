@@ -41,12 +41,17 @@ namespace Tennis
 
         private bool IsUnusual()
         {
-            return (player1Score >= 4 || player2Score >= 4 || !IsNotDeuce());
+            return EitherPlayerHas4() || IsDeuce();
         }
 
-        private bool IsNotDeuce()
+        private bool EitherPlayerHas4()
         {
-            return player1Score + player2Score < 6;
+            return player1Score >= 4 || player2Score >= 4;
+        }
+
+        private bool IsDeuce()
+        {
+            return player1Score + player2Score >= 6;
         }
 
         public void WonPoint(string playerName)
