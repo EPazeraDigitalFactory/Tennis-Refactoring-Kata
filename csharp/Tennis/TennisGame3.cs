@@ -15,7 +15,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            if (!NotUnusual())
+            if (NotUnusual())
             {
                 return UnusualScores();
             }
@@ -41,15 +41,7 @@ namespace Tennis
 
         private bool NotUnusual()
         {
-            if(player1Score < 4
-                                    &&
-                                player2Score < 4
-                                    &&
-                                IsNotDeuce())
-                                {
-                                    return true;
-                                }
-                                return false;
+            return (player1Score >= 4 || player2Score >= 4 || !IsNotDeuce());
         }
 
         private bool IsNotDeuce()
