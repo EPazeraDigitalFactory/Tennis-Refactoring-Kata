@@ -19,15 +19,15 @@ namespace Tennis
             {
                 return UsualScores();
             }
-            if (player1Score >= 3 && player1Score == player2Score)
-            {
-                return "Deuce";
-            }
             return UnusualScores();
         }
 
         private string UnusualScores()
         {
+            if (player1Score >= 3 && player1Score == player2Score)
+            {
+                return "Deuce";
+            }
             string scoringText = player1Score > player2Score ? player1Name : player2Name;
             return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
         }
