@@ -26,12 +26,8 @@ namespace Tennis
             {
                 return "Deuce";
             }
-            else
-            {
-                scoringText = player1Score > player2Score ? player1Name : player2Name;
-                return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
-            }
-            
+            scoringText = player1Score > player2Score ? player1Name : player2Name;
+            return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
         }
 
         private bool NotCloseToWinning()
