@@ -15,11 +15,11 @@ namespace Tennis
 
         public string GetScore()
         {
-            if (NotCloseToWinning())
+            if (!NotUnusual())
             {
-                return UsualScores();
+                return UnusualScores();
             }
-            return UnusualScores();
+            return UsualScores();
         }
 
         private string UnusualScores()
@@ -39,13 +39,17 @@ namespace Tennis
             return (player1Score == player2Score) ? scoringText + "-All" : scoringText + "-" + pointName[player2Score];
         }
 
-        private bool NotCloseToWinning()
+        private bool NotUnusual()
         {
-            return player1Score < 4
+            if(player1Score < 4
                                     &&
                                 player2Score < 4
                                     &&
-                                IsNotDeuce();
+                                IsNotDeuce())
+                                {
+                                    return true;
+                                }
+                                return false;
         }
 
         private bool IsNotDeuce()
