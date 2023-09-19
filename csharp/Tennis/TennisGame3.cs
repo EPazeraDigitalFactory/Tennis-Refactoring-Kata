@@ -22,7 +22,7 @@ namespace Tennis
                 scoringText = pointName[player1Score];
                 return (player1Score == player2Score) ? scoringText + "-All" : scoringText + "-" + pointName[player2Score];
             }
-            else if (player1Score>=3 && player1Score == player2Score)
+            if (player1Score>=3 && player1Score == player2Score)
             {
                 return "Deuce";
             }
