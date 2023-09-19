@@ -16,23 +16,28 @@ namespace Tennis
         public string GetScore()
         {
             string scoringText;
-            if (
-                    player1Score >= 4 ||
-                    player2Score >= 4 ||
-                    player1Score + player2Score >= 6
-                )
+            if (NotCloseToWinning())
+            {
+                string[] pointName = { "Love", "Fifteen", "Thirty", "Forty" };
+                scoringText = pointName[player1Score];
+                return (player1Score == player2Score) ? scoringText + "-All" : scoringText + "-" + pointName[player2Score];
+            }
+            else
             {
                 if (player1Score == player2Score)
                     return "Deuce";
                 scoringText = player1Score > player2Score ? player1Name : player2Name;
                 return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
             }
-            else
-            {
-                string[] pointName = { "Love", "Fifteen", "Thirty", "Forty" };
-                scoringText = pointName[player1Score];
-                return (player1Score == player2Score) ? scoringText + "-All" : scoringText + "-" + pointName[player2Score];
-            }
+        }
+
+        private bool NotCloseToWinning()
+        {
+            return player1Score < 4
+                                    &&
+                                player2Score < 4
+                                    &&
+                                player1Score + player2Score < 6;
         }
 
         public void WonPoint(string playerName)
