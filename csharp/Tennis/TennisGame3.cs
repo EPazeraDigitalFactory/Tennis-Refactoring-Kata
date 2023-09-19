@@ -31,7 +31,7 @@ namespace Tennis
                 return "Deuce";
             }
             string scoringText = player1Score > player2Score ? player1Name : player2Name;
-            if ((player1Score - player2Score) * (player1Score - player2Score) == 1)
+            if (System.Math.Abs(player1Score - player2Score) == 1)
             {
                 return "Advantage " + scoringText;
             }
