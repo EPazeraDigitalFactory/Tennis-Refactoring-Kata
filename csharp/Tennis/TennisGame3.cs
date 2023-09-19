@@ -31,7 +31,14 @@ namespace Tennis
                 return "Deuce";
             }
             string scoringText = player1Score > player2Score ? player1Name : player2Name;
-            return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
+            if ((player1Score - player2Score) * (player1Score - player2Score) == 1)
+            {
+                return "Advantage " + scoringText;
+            }
+            else
+            {
+                return "Win for " + scoringText;
+            }
         }
 
         private string UsualScores()
