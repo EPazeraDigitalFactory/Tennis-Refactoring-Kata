@@ -22,18 +22,16 @@ namespace Tennis
                 scoringText = pointName[player1Score];
                 return (player1Score == player2Score) ? scoringText + "-All" : scoringText + "-" + pointName[player2Score];
             }
+            else if (player1Score == player2Score)
+            {
+                return "Deuce";
+            }
             else
             {
-                if (player1Score == player2Score)
-                {
-                    return "Deuce";
-                }
-                else
-                {
-                    scoringText = player1Score > player2Score ? player1Name : player2Name;
-                    return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
-                }
+                scoringText = player1Score > player2Score ? player1Name : player2Name;
+                return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + scoringText : "Win for " + scoringText;
             }
+            
         }
 
         private bool NotCloseToWinning()
